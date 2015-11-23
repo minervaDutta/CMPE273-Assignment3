@@ -12,7 +12,7 @@
 +External API's: Uber's price estimates
 
 +Usage:
-+####################################### Plan a trip ######################################
+####################################### Plan a trip ######################################
 +                                                 POST        /trips   
 
 +Request:
@@ -23,7 +23,7 @@
     
 +}
 
-+#Response : array (best_route_location_ids) that sorts location id's Uber cost and duration.
++//Response: array (best_route_location_ids) that sorts location id's Uber cost and duration.
 
 +Response: HTTP 201
 +{
@@ -37,8 +37,8 @@
 +     "total_distance" : 27.5
   
 +}
-+
-+######################################################### Check a trip #############################################
+
+######################################################### Check a trip #############################################
 +                                                 GET        /trips/{trip_id}
 
 +Request:  GET             /trips/4083
@@ -56,8 +56,8 @@
      
 +}
 
-+################################ Start Trip ######################################
-+#################### Request destination 1 (after which destination 2 to n)####################
+################################ Start Trip ######################################
+#################### Request destination 1 (after which destination 2 to n)####################
 +PUT        /trips/{trip_id}/request
 
 +Request:  PUT             /trips/4083/request
@@ -77,7 +77,7 @@
      
 +}
 
-+############################## After destination n status updated to complete ############################################
+############################## After destination n status updated to complete ############################################
 
 +Response:
 +{
