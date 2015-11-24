@@ -46,7 +46,7 @@ func main() {
 // getSession creates a new mongo session and panics if connection error occurs
 func getSession() *mgo.Session {
 	// Connect to our local mongo
-	s, err := mgo.Dial("mongodb://taniachanda86:dharmanagar1@ds041164.mongolab.com:41164/go_273")
+	s, err := mgo.Dial("mongodb://minervaDutta:amma123@ds041144.mongolab.com:31144/go_273")
 
 	// Check if connection error, is mongo running?
 	if err != nil {
