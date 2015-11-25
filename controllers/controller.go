@@ -7,8 +7,8 @@ import (
 	"net/url"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
-  "strconv"
-  "io/ioutil"
+  	"strconv"
+  	"io/ioutil"
 	"Assignments/assnmnt3/httprouter"
 	"Assignments/assnmnt3/uber"
 )
@@ -23,11 +23,11 @@ type LocationController struct {
 
 
 type InputAddress struct {
-		Name   string    `json:"name"`
+		Name   string   `json:"name"`
 		Address string 	`json:"address"`
-		City string			`json:"city"`
-		State string		`json:"state"`
-		Zip string			`json:"zip"`
+		City string	`json:"city"`
+		State string	`json:"state"`
+		Zip string	`json:"zip"`
 	}
 
 
@@ -36,13 +36,13 @@ type OutputAddress struct {
 
 		Id     bson.ObjectId `json:"_id" bson:"_id,omitempty"`
 		Name   string        `json:"name"`
-		Address string 		`json:"address"`
-		City string			`json:"city" `
-		State string		`json:"state"`
-		Zip string			`json:"zip"`
+		Address string 	     `json:"address"`
+		City string	     `json:"city" `
+		State string	     `json:"state"`
+		Zip string	     `json:"zip"`
 
 		Coordinate struct{
-			Lat string 		`json:"lat"`
+			Lat string 	`json:"lat"`
 			Lang string 	`json:"lang"`
 		}
 	}
@@ -93,12 +93,12 @@ type TripPostInput struct{
 
 type TripPostOutput struct{
 	Id     bson.ObjectId 				`json:"_id" bson:"_id,omitempty"`
-	Status string  						  `json:"status"`
-	Starting_from_location_id   string    `json:"starting_from_location_id"`
+	Status string  					`json:"status"`
+	Starting_from_location_id   string    		`json:"starting_from_location_id"`
 	Best_route_location_ids []string
-	Total_uber_costs int			  `json:"total_uber_costs"`
-	Total_uber_duration int			`json:"total_uber_duration"`
-	Total_distance float64			`json:"total_distance"`
+	Total_uber_costs int			  	`json:"total_uber_costs"`
+	Total_uber_duration int				`json:"total_uber_duration"`
+	Total_distance float64				`json:"total_distance"`
 
 }
 
@@ -109,9 +109,9 @@ type UberOutput struct{
 }
 
 type TripPutOutput struct{
-	Id     bson.ObjectId 				  `json:"_id" bson:"_id,omitempty"`
-	Status string  						  `json:"status"`
-	Starting_from_location_id   string    `json:"starting_from_location_id"`
+	Id     bson.ObjectId 			 `json:"_id" bson:"_id,omitempty"`
+	Status string  				 `json:"status"`
+	Starting_from_location_id   string    	 `json:"starting_from_location_id"`
 	Next_destination_location_id   string    `json:"next_destination_location_id"`
 	Best_route_location_ids []string
 	Total_uber_costs int			  `json:"total_uber_costs"`
