@@ -39,58 +39,58 @@ Response: HTTP 201
   
 }
 
-######################################################### Check a trip #############################################
-+                                                 GET        /trips/{trip_id}
+### Check a trip 
+GET        /trips/{trip_id}
 
-+Request:  GET             /trips/4083
+Request:  GET             /trips/4083
 
-+Response:
-+{
+Response:
+{
 
-+     "id" : "4083",
-+     "status" : "planning",
-+     "starting_from_location_id: "10040",
-+     "best_route_location_ids" : [ "30000", "10000", "10002", "20005" ],
-+     "total_uber_costs" : 113,
-+     "total_uber_duration" : 115,
-+     "total_distance" : 27.5
+    "id" : "4083",
+    "status" : "planning",
+    "starting_from_location_id: "10040",
+    "best_route_location_ids" : [ "30000", "10000", "10002", "20005" ],
+    "total_uber_costs" : 113,
+     "total_uber_duration" : 115,
+     "total_distance" : 27.5
      
-+}
+}
 
-################################ Start Trip ######################################
-#################### Request destination 1 (after which destination 2 to n)####################
-+PUT        /trips/{trip_id}/request
+## Start Trip 
+//Request destination 1 (after which destination 2 to n)
+PUT        /trips/{trip_id}/request
 
-+Request:  PUT             /trips/4083/request
+Request:  PUT             /trips/4083/request
 
-+Response:
-+{
+Response:
+{
 
-+     "id" : "4083",
-+     "status" : "requesting",
-+     "starting_from_location_id”: "10040",
-+     "next_destination_location_id”: "30000",
-+     "best_route_location_ids" : [ "30000", "10000", "10002", "20005" ],
-+     "total_uber_costs" : 113,
-+     "total_uber_duration" : 115,
-+     "total_distance" : 27.5,
-+     "uber_wait_time_eta" : 7
+     "id" : "4083",
+     "status" : "requesting",
+     "starting_from_location_id”: "10040",
+     "next_destination_location_id”: "30000",
+     "best_route_location_ids" : [ "30000", "10000", "10002", "20005" ],
+     "total_uber_costs" : 113,
+     "total_uber_duration" : 115,
+     "total_distance" : 27.5,
+     "uber_wait_time_eta" : 7
      
-+}
+}
 
-############################## After destination n status updated to complete ############################################
+## After destination n status updated to complete 
 
-+Response:
-+{
+Response:
+{
 
-+     "id" : "4083",
-+     "status" : "completed",
-+     "starting_from_location_id”: "10040",
-+     "next_destination_location_id”: "",
-+     "best_route_location_ids" : [ "30000", "10000", "10002", "20005" ],
-+     "total_uber_costs" : 113,
-+     "total_uber_duration" : 115,
-+     "total_distance" : 27.5,
-+     "uber_wait_time_eta" : 0 
+     "id" : "4083",
+     "status" : "completed",
+     "starting_from_location_id”: "10040",
+     "next_destination_location_id”: "",
+     "best_route_location_ids" : [ "30000", "10000", "10002", "20005" ],
+     "total_uber_costs" : 113,
+     "total_uber_duration" : 115,
+     "total_distance" : 27.5,
+     "uber_wait_time_eta" : 0 
      
-+}
+}
