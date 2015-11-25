@@ -12,31 +12,31 @@
 +External API's: Uber's price estimates
 
 +Usage:
-####################################### Plan a trip ######################################
-+                                                 POST        /trips   
+##Plan a trip 
+POST        /trips   
 
-+Request:
-+{
+Request:
+{
    
-+    "starting_from_location_id: "10040",
-+    "location_ids" : [ "10000", "10002", "20005", "30000" ]
+    "starting_from_location_id: "10040",
+    "location_ids" : [ "10000", "10002", "20005", "30000" ]
     
-+}
+}
 
-+//Response: array (best_route_location_ids) that sorts location id's Uber cost and duration.
+//Response: array (best_route_location_ids) that sorts location id's Uber cost and duration.
 
-+Response: HTTP 201
-+{
+Response: HTTP 201
+{
 
-+     "id" : "4038",
-+     “status” : “planning”,
-+     "starting_from_location_id: "10040",
-+     "best_route_location_ids" : [ "30000", "10000", "10002", "20005" ],
-+     "total_uber_costs" : 113,
-+     "total_uber_duration" : 115,
-+     "total_distance" : 27.5
+     "id" : "4038",
+     “status” : “planning”,
+     "starting_from_location_id: "10040",
+     "best_route_location_ids" : [ "30000", "10000", "10002", "20005" ],
+     "total_uber_costs" : 113,
+     "total_uber_duration" : 115,
+     "total_distance" : 27.5
   
-+}
+}
 
 ######################################################### Check a trip #############################################
 +                                                 GET        /trips/{trip_id}
