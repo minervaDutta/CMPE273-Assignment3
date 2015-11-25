@@ -1,17 +1,18 @@
 
-+Assignment 3: CMPE-273 (Fall 15)
+##Assignment 3: CMPE-273 (Fall 15)
 
-+Author: Minerva Dutta
+Author: Minerva Dutta
 
-+Description: Trip Planner
+Description: Trip Planner
 
-+Input: Locations from a database
+Input: Locations from a database
 
-+Output: Best route (metric: cost and duration)
+Output: Best route (metric: cost and duration)
 
-+External API's: Uber's price estimates
+External API's: Uber's price estimates
 
-+Usage:
+Usage:
+-------
 ##Plan a trip 
 POST        /trips   
 
