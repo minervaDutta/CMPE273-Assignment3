@@ -5,19 +5,17 @@ import (
 	"fmt"
 	"net/http"
 	"bytes"
-	// "net/url"
-    // "strconv"
-    "io/ioutil"
-	// "gopkg.in/mgo.v2"
-	 // "gopkg.in/mgo.v2/bson"
+  "io/ioutil"
 )
 
-// List of price estimates
+//************************************ data structs for Uber******************************************
+
 type PriceEstimates struct {
 	Prices         []PriceEstimate `json:"prices"`
 }
+// List of prices
 
-// Uber price estimate
+
 type PriceEstimate struct {
 	ProductId       string  `json:"product_id"`
 	CurrencyCode    string  `json:"currency_code"`
@@ -29,44 +27,52 @@ type PriceEstimate struct {
 	Duration        int     `json:"duration"`
 	Distance        float64 `json:"distance"`
 }
+// Uber price estimate structure
 
 type UberOutput struct{
 	Cost int
 	Duration int
 	Distance float64
 }
+//output structure
 
 type UberETA struct{
   Request_id string `json:"request_id"`
   Status string	    `json:"status"`
-  Vehicle string	`json:"vehicle"`
-  Driver string		`json:"driver"`
-  Location string	`json:"location"`
-  ETA int			`json:"eta"`
+  Vehicle string    `json:"vehicle"`
+  Driver string	    `json:"driver"`
+  Location string   `json:"location"`
+  ETA int	    `json:"eta"`
   SurgeMultiplier float64 `json:"surge_multiplier"`
 }
+// Eta estimates
+
+//******************************************************************************************************************
+
+//**********************Functions for Uber**************************************************************************
 
 func Get_uber_price(startLat, startLon, endLat, endLon string) UberOutput{
 	client := &http.Client{}
 	reqURL := fmt.Sprintf("https://sandbox-api.uber.com/v1/estimates/price?start_latitude=%s&start_longitude=%s&end_latitude=%s&end_longitude=%s&server_token=sh4TxBDenZAnaa0XMFQXgyGEI4hOt60ZRflX-3rb", startLat, startLon, endLat, endLon)
 	fmt.Println("URL formed: "+ reqURL)
-	// res, err := http.GET(reqURL,)
+
 	req, err := http.NewRequest("GET", reqURL , nil)
 	resp, err := client.Do(req)
 	if err != nil {
-		fmt.Println("error in sending req to Uber: ", err);	
+		fmt.Println("error sending requests to Uber: ", err);
 	}
+
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Println("error in reading response: ", err);	
+		fmt.Println("error in reading response: ", err);
 	}
 
 	var res PriceEstimates
 	err = json.Unmarshal(body, &res)
 	if err != nil {
-		fmt.Println("error in unmashalling response: ", err);	
+		fmt.Println("error in unmashalling response: ", err);
 	}
 
 	var uberOutput UberOutput
@@ -90,22 +96,23 @@ func Get_uber_eta(startLat, startLon, endLat, endLon string) int{
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		fmt.Println("error in sending req to Uber: ", err);	
+		fmt.Println("error in sending req to Uber: ", err);
 	}
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Println("error in reading response: ", err);	
+		fmt.Println("error in reading response: ", err);
 	}
 
 	var res UberETA
 	err = json.Unmarshal(body, &res)
 	if err != nil {
-		fmt.Println("error in unmashalling response: ", err);	
+		fmt.Println("error in unmashalling response: ", err);
 	}
 	eta:= res.ETA
 	return eta
-	
+
 }
+
 	
