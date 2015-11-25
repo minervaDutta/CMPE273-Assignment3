@@ -1,37 +1,31 @@
 package models
 
 
-
+//*********************************Address structs*************************************
 type InputAddress struct {
-		Name   string        `json:"name"`
-		Address string 		`json:"address"`
-		City string			`json:"city"`
-		State string		`json:"state"`
-		Zip string			`json:"zip"`
+		Name   string   `json:"name"`
+		Address string 	`json:"address"`
+		City string	`json:"city"`
+		State string	`json:"state"`
+		Zip string	`json:"zip"`
 	}
-
-
 
 type OutputAddress struct {
 
 		Id     bson.ObjectId `json:"_id" bson:"_id,omitempty"`
 		Name   string        `json:"name"`
-		Address string 		`json:"address"`
-		City string			`json:"city" `
-		State string		`json:"state"`
-		Zip string			`json:"zip"`
+		Address string 	     `json:"address"`
+		City string	     `json:"city" `
+		State string	     `json:"state"`
+		Zip string	     `json:"zip"`
 
 		Coordinate struct{
-			Lat string 		`json:"lat"`
+			Lat string 	`json:"lat"`
 			Lang string 	`json:"lang"`
 		}
 	}
-
-//------The total structure for google response--------------------------
-
-type GoogleResponse struct {
-	Results []GoogleResult
-}
+//**************************************************************************************
+//******************************Google Response structs*********************************
 
 type GoogleResult struct {
 
@@ -41,11 +35,20 @@ type GoogleResult struct {
 	Types        []string
 }
 
+type GoogleResponse struct {
+	Results []GoogleResult
+}
+
 type GoogleAddressPart struct {
 
 	Name      string `json:"long_name"`
 	ShortName string `json:"short_name"`
 	Types     []string
+}
+
+type Point struct {
+	Lat float64
+	Lng float64
 }
 
 type Geometry struct {
@@ -58,8 +61,4 @@ type Geometry struct {
 type Bounds struct {
 	NorthEast, SouthWest Point
 }
-
-type Point struct {
-	Lat float64
-	Lng float64
-}
+//*******************************************************************************************
